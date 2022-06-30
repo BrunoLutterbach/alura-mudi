@@ -1,5 +1,6 @@
 package br.com.brunolutterbach.controller;
 
+import br.com.brunolutterbach.dto.RequisicaoNovoPedido;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +18,8 @@ public class PedidoController {
     }
 
     @PostMapping("novo")
-    public String novo() {
-        return " ";
+    public String novo(RequisicaoNovoPedido requisicaoNovoPedido) {
+        return "pedido/formulario";
     }
 
 }
