@@ -2,11 +2,17 @@ package br.com.brunolutterbach.dto;
 
 import br.com.brunolutterbach.model.Pedido;
 
-// DTO - Data Transfer Object - é um objeto que é utilizado para transferir dados.
+import javax.validation.constraints.NotBlank;
+
 public class RequisicaoNovoPedido {
 
+    @NotBlank
     private String nomeProduto;
+
+    @NotBlank
     private String urlProduto;
+
+    @NotBlank
     private String urlImagem;
     private String descricao;
 
