@@ -23,7 +23,7 @@ public class PedidoController {
     }
 
     @GetMapping("formulario")
-    public String formulario() {
+    public String formulario(RequisicaoNovoPedido requisicaoNovoPedido) {
         return "pedido/formulario";
         // Abre a página dentro da pasta pedido/formulario.html
     }

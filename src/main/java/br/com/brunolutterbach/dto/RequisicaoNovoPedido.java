@@ -6,13 +6,13 @@ import javax.validation.constraints.NotBlank;
 
 public class RequisicaoNovoPedido {
 
-    @NotBlank
+    @NotBlank(message = "Este campo não deve estar em branco!")
     private String nomeProduto;
 
-    @NotBlank
+    @NotBlank(message = "Este campo não deve estar em branco!")
     private String urlProduto;
 
-    @NotBlank
+    @NotBlank(message = "Este campo não deve estar em branco!")
     private String urlImagem;
     private String descricao;
 
