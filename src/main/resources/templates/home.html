@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-            crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
+<head th:replace="~{base :: head}"></head>
+
 <body>
+<div th:replace="~{base :: logo}"></div>
 <div class="container">
-    <div class="container-fluid bg-dark text-light p-5">
-        <h1 class="display-4">Meus Pedidos</h1>
-    </div>
+<div th:replace="~{base :: titulo('Meus Pedidos')}"></div>
     <nav class="navbar navbar-expand bg-light d-flex justify-content-between mb-3">
         <div class="navbar-nav">
             <a class="nav-link" href="">Todos</a>
