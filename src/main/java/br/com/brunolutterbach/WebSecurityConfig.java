@@ -21,7 +21,9 @@ public class WebSecurityConfig {
                 .and()
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .permitAll());
+                        .permitAll())
+                .logout(logout -> logout
+                        .logoutUrl("/logout"));
 
         return http.build();
     }
