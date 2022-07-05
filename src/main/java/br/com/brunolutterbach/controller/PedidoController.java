@@ -41,7 +41,7 @@ public class PedidoController {
 
         // Pega o usuário logado no sistema.
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userRepository.findByUserName(username);
+        User user = userRepository.findByUsername(username);
 
         Pedido pedido = requisicaoNovoPedido.toPedido();
         pedido.setUser(user);
