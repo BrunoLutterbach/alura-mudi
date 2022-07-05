@@ -8,7 +8,7 @@
     <div th:replace="~{base :: titulo('Meus Pedidos')}"></div>
     <nav class="navbar navbar-expand bg-light d-flex justify-content-between mb-3">
         <div class="navbar-nav">
-            <a th:classappend="${status} == null ? 'active' : ''" class="nav-link" href="/home">Todos</a>
+            <a th:classappend="${status} == null ? 'active' : ''" class="nav-link" href="//home">Todos</a>
             <a th:classappend="${status} == 'aguardando' ? 'active' : ''" class="nav-link" href="/home/aguardando">Aguardando</a>
             <a th:classappend="${status} == 'aprovado' ? 'active' : ''" class="nav-link"
                href="/home/aprovado">Aprovado</a>
