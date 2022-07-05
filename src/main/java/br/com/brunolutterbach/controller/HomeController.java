@@ -25,23 +25,9 @@ public class HomeController {
 
     @GetMapping
     public String home(Model model, Principal principal) {
-        List<Pedido> pedidos = pedidoRepository.findAll();
+        List<Pedido> pedidos = pedidoRepository.findByStatus(StatusPedido.ENTREGUE);
         model.addAttribute("pedidos", pedidos);
         return "home";
     }
-
-    @GetMapping("{status}")
-    public String aguardando(@PathVariable("status") String status, Model model, Principal principal) {
-        List<Pedido> pedidos = pedidoRepository.findByStatusAndUsuario(StatusPedido.valueOf(status.toUpperCase()), principal.getName());
-        model.addAttribute("pedidos", pedidos);
-        model.addAttribute("status", status);
-        return "home";
-    }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    public String onErro() {
-        return "redirect:/home";
-    }
-
 }
 
