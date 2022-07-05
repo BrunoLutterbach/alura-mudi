@@ -2,7 +2,10 @@ package br.com.brunolutterbach.controller;
 
 import br.com.brunolutterbach.dto.RequisicaoNovoPedido;
 import br.com.brunolutterbach.model.Pedido;
+import br.com.brunolutterbach.model.User;
 import br.com.brunolutterbach.repository.PedidoRepository;
+import br.com.brunolutterbach.repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +19,12 @@ import javax.validation.Valid;
 @RequestMapping("pedido")
 public class PedidoController {
 
-    private PedidoRepository pedidoRepository;
+    private final PedidoRepository pedidoRepository;
+    private final UserRepository userRepository;
 
-    public PedidoController(PedidoRepository pedidoRepository) {
+    public PedidoController(PedidoRepository pedidoRepository, UserRepository userRepository) {
         this.pedidoRepository = pedidoRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("formulario")
@@ -34,7 +39,12 @@ public class PedidoController {
             return "pedido/formulario";
         }
 
+        // Pega o usuário logado no sistema.
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUserName(username);
+
         Pedido pedido = requisicaoNovoPedido.toPedido();
+        pedido.setUser(user);
         pedidoRepository.save(pedido);
 
         return "redirect:/home";
