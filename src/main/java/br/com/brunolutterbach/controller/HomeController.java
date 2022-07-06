@@ -3,11 +3,10 @@ package br.com.brunolutterbach.controller;
 import br.com.brunolutterbach.model.Pedido;
 import br.com.brunolutterbach.model.StatusPedido;
 import br.com.brunolutterbach.repository.PedidoRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
@@ -25,7 +24,7 @@ public class HomeController {
 
     @GetMapping
     public String home(Model model, Principal principal) {
-        List<Pedido> pedidos = pedidoRepository.findByStatus(StatusPedido.ENTREGUE);
+        List<Pedido> pedidos = pedidoRepository.findByStatus(StatusPedido.ENTREGUE, Sort.by("dataDaEntrega").descending());
         model.addAttribute("pedidos", pedidos);
         return "home";
     }
