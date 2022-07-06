@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure (HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                 .antMatchers("/home/**").permitAll()
@@ -32,12 +32,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .defaultSuccessUrl("/usuario/pedido", true)
                         .permitAll())
                 .logout(logout -> logout
-                        .logoutUrl("/logout"))
+                        .logoutUrl("/logout").logoutSuccessUrl("/home"))
                 .csrf().disable();
     }
 
     @Override
-    protected void configure (AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 //        UserDetails user = User.builder()
