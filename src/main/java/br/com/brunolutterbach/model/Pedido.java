@@ -7,11 +7,11 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 public class Pedido {
 
@@ -32,4 +32,7 @@ public class Pedido {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
+    private List<Oferta> ofertas;
 }
