@@ -5,6 +5,7 @@ import br.com.brunolutterbach.model.Oferta;
 import br.com.brunolutterbach.model.Pedido;
 import br.com.brunolutterbach.repository.PedidoRepository;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,10 +22,10 @@ public class OfertasRest {
     }
 
     @PostMapping
-    public Oferta criaOferta(RequisicaoNovaOferta requisicao) {
+    public Oferta criaOferta(@RequestBody RequisicaoNovaOferta requisicao) {
 
         Optional<Pedido> pedidoBuscado = pedidoRepository.findById(requisicao.getPedidoId());
-        if (pedidoBuscado.isEmpty()) {
+        if (!pedidoBuscado.isPresent()) {
             throw new IllegalArgumentException("Pedido não encontrado");
         }
         Pedido pedido = pedidoBuscado.get();

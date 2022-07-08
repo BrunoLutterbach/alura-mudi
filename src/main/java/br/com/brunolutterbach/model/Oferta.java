@@ -1,16 +1,15 @@
 package br.com.brunolutterbach.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
 public class Oferta {
 
     @Id
@@ -23,6 +22,7 @@ public class Oferta {
 
     private String comentario;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Pedido pedido;
 

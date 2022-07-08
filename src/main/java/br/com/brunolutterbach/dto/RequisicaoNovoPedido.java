@@ -8,8 +8,6 @@ import javax.validation.constraints.NotBlank;
 
  @Getter
  @Setter
- @ToString
- @RequiredArgsConstructor
 public class RequisicaoNovoPedido {
 
     @NotBlank(message = "Este campo não deve estar em branco!")
