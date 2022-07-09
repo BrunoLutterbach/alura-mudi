@@ -1,5 +1,7 @@
 package br.com.brunolutterbach.controller.interceptor;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +13,7 @@ import java.util.List;
 
 public class InterceptadorDeAcessos implements HandlerInterceptor {
 
-    private static List<Acesso> acessos = new ArrayList<>();
+    public static List<Acesso> acessos = new ArrayList<>();
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -34,7 +36,9 @@ public class InterceptadorDeAcessos implements HandlerInterceptor {
         acessos.add(acesso);
     }
 
-    class Acesso {
+    @Getter
+    @Setter
+    public static class Acesso {
         private String path;
         private LocalDateTime data;
         private Duration duracao;
