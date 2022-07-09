@@ -21,11 +21,11 @@ public class RequisicaoNovaOferta {
     private Long pedidoId;
 
     @Pattern(regexp = "^[0-9]{1,3}\\.[0-9]{2}$", message = "Valor deve estar no formato 99.99")
-    @NotNull
+    @NotNull(message = "Valor não pode ser nulo")
     private String valor;
 
     @Pattern(regexp = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}$", message = "Data deve estar no formato 01/01/2022")
-    @NotNull
+    @NotNull(message = "Data não pode ser nula")
     private String dataDaEntrega;
 
     private String comentario;
